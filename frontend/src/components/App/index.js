@@ -2,45 +2,41 @@ import React, { Component } from 'react';
 import Nav from '../Nav';
 import './App.css';
 import { render } from 'react-dom';
-import 'whatwg-fetch';
+import axios from 'axios'
+
+axios.defaults.headers.common['Authorization'] = 'Api-Key ssuIkXyp.yDPz6hc1NqxHnTj53GQKY6soxP2ZRQiN';
 
 class App extends Component {
-  state = {
-    message: ''
+  constructor(props) {
+    super();
+    this.state = {
+        items: [],
+    };
   }
 
   componentDidMount() {
-    fetch(
-      'http://127.0.0.1:8000/api/items/', {
-        mode: 'cors',
-          method: 'options', 
-          headers: new Headers({
-            'Access-Control-Allow-Origin': '*',
-            'Accept': 'application/json',
-            'Authorization': 'Api-Key ssuIkXyp.yDPz6hc1NqxHnTj53GQKY6soxP2ZRQiN'
-          }), 
-          credentials: 'same-origin', // you need to add this line
-        }
-      ).then(response => {
+    axios.get('http://127.0.0.1:8000/api/items/')
+      .then(response => {
       if (response.status >= 400) {
         console.log('ERROR');
         return this.setState(() => {
           return { message: 'ERROR' };
         });
+      } else {
+        this.setState({ items : response.data });
+        console.log(this.state.items);
       }
     })
   }
-
-  
 
   // The length of the array: {this.state.series.length}
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <Nav desc = "Ejemplo 1"/>
-          <Nav desc = "Ejemplo 2"/>
-          
+          {this.state.items.map(item => {
+            return <li>{item.title}</li> 
+          })}
         </header>
       </div>
     );
