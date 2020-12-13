@@ -23,3 +23,49 @@ export function getItems() {
         }
     };
 };
+
+export function getAsks() {
+    return async dispatch => {
+        dispatch({
+            type: 'GET_ASKS',
+        });
+
+        try {
+            const response = await axiosClient.get(`/items/asks`);
+            dispatch({
+                type: 'GET_ASKS_SUCCESS',
+                payload: response.data,
+            });
+            return true;
+        }
+        catch (err) {
+            dispatch({
+                type: 'GET_ASKS_FAIL',
+            });
+            return false;
+        }
+    };
+};
+
+export function getUrls() {
+    return async dispatch => {
+        dispatch({
+            type: 'GET_URLS',
+        });
+
+        try {
+            const response = await axiosClient.get(`/items/urls`);
+            dispatch({
+                type: 'GET_URLS_SUCCESS',
+                payload: response.data,
+            });
+            return true;
+        }
+        catch (err) {
+            dispatch({
+                type: 'GET_URLS_FAIL',
+            });
+            return false;
+        }
+    };
+};
