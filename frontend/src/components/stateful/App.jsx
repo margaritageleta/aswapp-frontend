@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import store from '../../redux/store';
 import { Provider } from 'react-redux';
 import ItemsList from './ItemsList';
+import Item from './Item';
 
 class App extends Component {
   constructor() {
@@ -16,7 +17,7 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <h1>HackerNews</h1>
-            <ItemsList />
+            <Item id={1}/>
           </header>
         </div>
       </Provider>
