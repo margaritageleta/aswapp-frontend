@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import ItemsList from './ItemsList';
 import Item from './Item';
 import Comments from './Comments';
+import User from './User';
 
 class App extends Component {
   constructor() {
@@ -18,7 +19,7 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <h1>HackerNews</h1>
-            <Comments id={1}/>
+            <User />
           </header>
         </div>
       </Provider>
