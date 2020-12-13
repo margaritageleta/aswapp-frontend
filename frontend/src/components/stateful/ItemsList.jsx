@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getItems } from '../../redux/actions/itemActions'
+import Contribution from '../stateless/Contribution'
 
  class Items extends Component {
 
@@ -14,10 +15,8 @@ import { getItems } from '../../redux/actions/itemActions'
   
         return (
             <div>
-                {items.map(u => 
-                    <React.Fragment key={u.id}>
-                        <h6 >{u.name}</h6> 
-                    </React.Fragment>
+                {items.map(i => 
+                    <Contribution item={i}/>
                 )}
             </div>
         )
