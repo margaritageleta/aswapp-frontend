@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // the Provider provides the store
 import store from '../../redux/store';
 import { Provider } from 'react-redux';
-import ItemsList from './ItemsList';
+import Items from './Items';
 import Item from './Item';
 import Comments from './Comments';
 import User from './User';
@@ -19,7 +19,7 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <h1>HackerNews</h1>
-            <User />
+            <Items type={'ASK'} userId={3} voted={true} />
           </header>
         </div>
       </Provider>
