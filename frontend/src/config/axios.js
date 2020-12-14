@@ -15,7 +15,7 @@ const axiosClient = axios.create({
 });
 
 export default axiosClient;
-
+export const idClient = 3;
 
 /*
 componentDidMount() {
