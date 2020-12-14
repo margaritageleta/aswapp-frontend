@@ -35,7 +35,7 @@ class Contribution extends Component {
 
     render() {
         const { classes } = this.props;
-        
+
         return(
             <Grid item key={this.props.item.title}>
             <Card style={{ marginTop: 10, marginLeft: 5, marginRight: 5 }}>
@@ -48,7 +48,7 @@ class Contribution extends Component {
               </CardActionArea>
               <CardActions>
                 <Button size="small" color="primary">
-                    {this.props.item.number_votes} VOTE
+                    {this.props.item.number_votes} VOTES
                 </Button>
                 <Button size="small" color="primary">
                     USER {this.props.item.author}
