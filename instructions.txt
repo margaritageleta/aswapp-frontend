@@ -1,0 +1,13 @@
+
+
+Stateful ==> .jsx 
+en el componentDidMount hacer llamada a la API con axiosClient
+lo guardas con setState
+la info guardada la pasas a un componente stateless
+
+Stateless ==> .jsx
+Se crea el componente estatico que renderiza todo los campos del JSON
+
+Se crea una pantalla en App.jsx y se exporta
+En index.js importas y se añaden las rutas
+

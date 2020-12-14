@@ -46,7 +46,7 @@ import { Grid, Paper, Typography } from "@material-ui/core";
             <div>
                 <Grid container direction={'column'}>
                     {this.state.items.map(i => 
-                        <Contribution item={i}/>
+                        <Contribution item={i} less={true}/>
                     )}
                 </Grid>
             </div>
