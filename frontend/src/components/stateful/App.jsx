@@ -5,8 +5,9 @@ import Item from './Item';
 import Comments from './Comments';
 import User from './User';
 import Nav from '../stateless/Nav';
+import { useParams } from 'react-router-dom'
 
-const News = () => {
+const NewsScreen = () => {
 	return (
 		<div>
         <Nav/>
@@ -15,7 +16,7 @@ const News = () => {
 	)
 };
 
-const Newest = () => {
+const NewestScreen = () => {
 	return (
 		<div>
         <Nav/>
@@ -24,7 +25,7 @@ const Newest = () => {
 	)
 };
 
-const Ask = () => {
+const AskScreen = () => {
 	return (
 		<div>
         <Nav/>
@@ -33,4 +34,15 @@ const Ask = () => {
 	)
 };
 
-export { News, Newest, Ask };
+const ItemScreen = () => {
+  let { id } = useParams()
+  return (
+		<div>
+        <Nav/>
+        <h1>HI ID {id}!</h1>      
+        <Item id={id} />
+		</div>
+	)
+};
+
+export { NewsScreen, NewestScreen, AskScreen, ItemScreen };
