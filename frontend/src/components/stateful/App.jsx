@@ -7,6 +7,10 @@ import Items from './Items';
 import Item from './Item';
 import Comments from './Comments';
 import User from './User';
+import Nav from '../stateless/Nav';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import TypoGraphy from '@material-ui/core/Typography';
 
 class App extends Component {
   constructor() {
@@ -16,10 +20,17 @@ class App extends Component {
   render() {
     return (
       <Provider store={ store }>
-        <div className="App">
-          <header className="App-header">
-            <h1>HackerNews</h1>
-            <Items type={'ASK'} userId={3} voted={true} />
+        <AppBar color="primary" position="static" style={{ margin: 0 }}>
+          <Toolbar>
+            <TypoGraphy variant="title" color="inherit">
+              HackerNews
+            </TypoGraphy>
+          </Toolbar>
+        </AppBar>
+        <div>
+          <header>
+            <Items type={'ALL'} userId={''} voted={false} />
+
           </header>
         </div>
       </Provider>
