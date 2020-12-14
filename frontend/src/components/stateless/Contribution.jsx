@@ -1,20 +1,70 @@
 import React, { Component } from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import { Grid, Paper, Typography } from "@material-ui/core";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
+import moment from 'moment';
+import Moment from 'react-moment';
+
+const styles = theme => ({
+    root: {
+        minWidth: 275,
+        backgroundColor: 'aliceblue',
+      },
+      bullet: {
+        display: 'inline-block',
+        margin: '0 2px',
+        transform: 'scale(0.8)',
+      },
+      title: {
+        fontSize: 14,
+      },
+      pos: {
+        marginBottom: 12,
+      },
+      avatar: {
+        backgroundColor: 'red',
+      },
+  });
 
 class Contribution extends Component {
+
     render() {
-        return (
-            <div>
-                <h4>{this.props.item.title}</h4>
-                <p>Kind: {this.props.item.kind}</p>
-                <p>Author: {this.props.item.author}</p>
-                <p>Number of votes: {this.props.item.number_votes}</p>
-                <p>Created at: {this.props.item.created_at}</p>
-                <p>Text: {this.props.item.question}</p>
-                <p>Url: {this.props.item.url}</p>
-            </div>
+        const { classes } = this.props;
+        
+        return(
+            <Grid item key={this.props.item.title}>
+            <Card style={{ marginTop: 10, marginLeft: 5, marginRight: 5 }}>
+              <CardActionArea>
+                <CardContent>
+                  <Typography variant="h6" component="h2">
+                    {this.props.item.title}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button size="small" color="primary">
+                    {this.props.item.number_votes} VOTE
+                </Button>
+                <Button size="small" color="primary">
+                    USER {this.props.item.author}
+                </Button>
+                <Button size="small" color="primary">
+                    <Moment fromNow>
+                        {this.props.item.created_at}
+                    </Moment>
+                </Button>
+              </CardActions>
+            </Card>
+          </Grid>
         )
     }
 }
 
-export default Contribution;
+export default withStyles(styles)(Contribution);
+
 
