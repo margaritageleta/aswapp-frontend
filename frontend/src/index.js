@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { News, Newest, Ask } from './components/stateful/App';
+import { NewsScreen, NewestScreen, AskScreen, ItemScreen } from './components/stateful/App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <Router>
     <Switch>
-      <Route exact path="/" component={News}/>
-      <Route exact path="/newest" component={Newest}/>
-      <Route exact path="/ask" component={Ask}/>
+      <Route exact path="/" component={NewsScreen}/>
+      <Route exact path="/newest" component={NewestScreen}/>
+      <Route exact path="/ask" component={AskScreen}/>
+      <Route exact path="/item/:id" component={ItemScreen}/>
     </Switch>
   </Router>,
   document.getElementById('root')
