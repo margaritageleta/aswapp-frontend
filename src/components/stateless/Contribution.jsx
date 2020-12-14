@@ -43,7 +43,7 @@ class Contribution extends Component {
         return(
             <Grid item key={this.props.item.title}>
             <Card style={{ marginTop: 10, marginLeft: 5, marginRight: 5 }}>
-              <CardActionArea>
+              <CardActionArea onClick={this.redirect.bind(this)}>
                 <CardContent>
                   <Typography variant="h6" component="h2">
                     {this.props.item.title}

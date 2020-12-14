@@ -38,8 +38,7 @@ const ItemScreen = () => {
   let { id } = useParams()
   return (
 		<div>
-        <Nav/>
-        <h1>HI ID {id}!</h1>      
+        <Nav/>   
         <Item id={id} />
 		</div>
 	)
