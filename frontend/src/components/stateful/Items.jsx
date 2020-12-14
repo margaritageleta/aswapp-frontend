@@ -3,6 +3,7 @@ import axiosClient from '../../config/axios';
 // import { connect } from 'react-redux'
 // import { getItems, getAsks, getUrls } from '../../redux/actions/itemActions'
 import Contribution from '../stateless/Contribution'
+import { Grid, Paper, Typography } from "@material-ui/core";
 
  class Items extends Component {
     constructor(props) {
@@ -43,9 +44,11 @@ import Contribution from '../stateless/Contribution'
   
         return (
             <div>
-                {this.state.items.map(i => 
-                    <Contribution item={i}/>
-                )}
+                <Grid container direction={'column'}>
+                    {this.state.items.map(i => 
+                        <Contribution item={i}/>
+                    )}
+                </Grid>
             </div>
         )
     }
