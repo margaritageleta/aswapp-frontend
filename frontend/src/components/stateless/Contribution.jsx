@@ -7,8 +7,8 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
-import moment from 'moment';
 import Moment from 'react-moment';
+import { withRouter } from 'react-router-dom';
 
 const styles = theme => ({
     root: {
@@ -33,6 +33,10 @@ const styles = theme => ({
 
 class Contribution extends Component {
 
+    redirect() {
+        this.props.history.push(`/item/${this.props.item.id}`);
+    }
+
     render() {
         const { classes } = this.props;
 
@@ -47,10 +51,10 @@ class Contribution extends Component {
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary" onClick={console.log('CLICK')}>
                     {this.props.item.number_votes} VOTES
                 </Button>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary" onClick={this.redirect.bind(this)}>
                     USER {this.props.item.author}
                 </Button>
                 <Button size="small" color="primary">
@@ -65,6 +69,6 @@ class Contribution extends Component {
     }
 }
 
-export default withStyles(styles)(Contribution);
+export default withRouter(Contribution);
 
 
