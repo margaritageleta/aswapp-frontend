@@ -22,11 +22,12 @@ import Contribution from '../stateless/Contribution'
     }
 
     render() {
-
+        console.log('LESS PROP', this.props.less);
         return (
+
             <div>
                 <h4>{this.state.message}</h4>
-                <Contribution item={this.state.item}/>
+                <Contribution item={this.state.item} less={this.props.less}/>
             </div>
         )
     }
