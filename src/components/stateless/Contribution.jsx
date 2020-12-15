@@ -8,6 +8,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Moment from 'react-moment';
 import { withRouter } from 'react-router-dom';
+import Note from './Note';
 
 class Contribution extends Component {
 
@@ -52,11 +53,18 @@ class Contribution extends Component {
                 </Button>
               </CardActions>
             </Card>
+            {(this.props.less == false) 
+            ? <Grid container direction={'column'}>
+                {this.props.comments.map(c => 
+                    c.parent == null? <Note comments={this.props.comments} comment={c} depth={4}/>
+                    : <span></span>
+                )}
+              </Grid>
+            : <span></span>
+            }
           </Grid>
         )
     }
 }
 
 export default withRouter(Contribution);
-
-
