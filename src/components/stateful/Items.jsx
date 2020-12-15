@@ -3,7 +3,7 @@ import axiosClient from '../../config/axios';
 // import { connect } from 'react-redux'
 // import { getItems, getAsks, getUrls } from '../../redux/actions/itemActions'
 import Contribution from '../stateless/Contribution'
-import { Grid, Paper, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 
  class Items extends Component {
     constructor(props) {

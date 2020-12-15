@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -7,7 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import TypoGraphy from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import './NavStyle.css'
-import { Icon, IconButton, makeStyles, withTheme } from '@material-ui/core';
+import { IconButton, makeStyles } from '@material-ui/core';
 import HackerIcon from './favicon.png'
 
 const useStyles =  makeStyles((theme) => ({

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import axiosClient from '../../config/axios';
 import Profile from '../stateless/Profile';
-import Contribution from '../stateless/Contribution';
 
  class User extends Component {
     constructor(props) {
