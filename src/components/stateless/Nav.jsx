@@ -6,42 +6,91 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import TypoGraphy from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
+import './NavStyle.css'
+import { Icon, IconButton, makeStyles, withTheme } from '@material-ui/core';
+import HackerIcon from './favicon.png'
 
-class Nav extends Component {
+const useStyles =  makeStyles((theme) => ({
+    offset: theme.mixins.toolbar,
+    title: {
+        
+        color: 'black',
+        fontStyle: 'black',
+        fontSize: 13.333,
+        fontFamily: 'Verdana, Geneva, sans-serif',
 
-    render() {
+    },
+    bar: {
+        backgroundColor: '#ff6b0f',
+        width: '90%',
+        marginTop: '7.5px',
+        position: 'relative',
+        justifyContent: 'center',
+        justifySelf: 'center',
+        justifyItems: 'center',
+        height: 
+
+    },
+    menuButton: {
+        marginRight: 100,
+    },
+    imagen: {
+        borderBlockColor: 'white' ,
+        height: 18, 
+        width: 18, 
+        borderWidth: 10, 
+        borderColor: 'white',
+        color: 'white', 
+        backgroundColor: 'white' ,
+    },
+}));
+
+export default function Nav() {
+    const classes = useStyles()
         return (
-            <AppBar color="primary" position="static" style={{ margin: 0 }}>
-                <Toolbar>
-                    <TypoGraphy variant="title" color="inherit">
-                        <Link to='/'>HackerNews</Link>
-                    </TypoGraphy>
-                </Toolbar>
-                <List component="nav">
-                    <ListItem component="div">
-                        <ListItemText inset>
-                            <TypoGraphy color="inherit" variant="title">
-                                <Link to='/newest'> Newest</Link>
-                    </TypoGraphy>
-                        </ListItemText>
+            /*<nav className="Navbar">
+                <i></i>
+                <h1 className="navbar-logo">HOLA</h1>
 
-                        <ListItemText inset>
-                            <TypoGraphy color="inherit" variant="title">
-                                <Link to='/ask'>Ask</Link>
-                    </TypoGraphy>
-                        </ListItemText>
+            </nav>
+            */
+           <div>
+                <AppBar className={classes.bar}>
+                    <Toolbar >
+                        <IconButton>
+                            <img src={HackerIcon} alt="Logo" style={{ border: '1px solid white' }}></img>
+                        </IconButton>
+                        <TypoGraphy>
+                            <h1 className={classes.title} to='/' >Hacker News</h1>
+                        </TypoGraphy>
+                    
+                        <List component="nav">
+                            <ListItem component="div">
+                                <ListItemText inset>
+                                    <TypoGraphy color="inherit" variant="title">
+                                        <Link to='/newest'> Newest</Link>
+                                    </TypoGraphy>
+                                </ListItemText>
 
-                        <ListItemText inset>
-                            <TypoGraphy color="inherit" variant="title">
-                                Contact
-                    </TypoGraphy>
-                        </ListItemText>
-                    </ListItem >
+                                <ListItemText inset>
+                                    <TypoGraphy color="inherit" variant="title">
+                                        <Link to='/ask'>Ask</Link>
+                                    </TypoGraphy>
+                                </ListItemText>
 
-                </List>
-            </AppBar>
+                                <ListItemText inset>
+                                    <TypoGraphy color="inherit" variant="title">
+                                        Contact
+                                    </TypoGraphy>
+                                </ListItemText>
+                            </ListItem >
+
+                        </List>
+                    </Toolbar>
+                   
+                </AppBar>
+                <div className={classes.offset}></div>
+            </div>
         )
-    }
 }
 
-export default Nav;
