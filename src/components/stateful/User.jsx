@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axiosClient from '../../config/axios';
+import Profile from '../stateless/Profile';
+import Contribution from '../stateless/Contribution';
 
  class User extends Component {
     constructor(props) {
@@ -12,9 +14,10 @@ import axiosClient from '../../config/axios';
     
     async componentDidMount(){
         try {
-            const response = await axiosClient.get(`/users/` + '3');
+            console.log(this.props.id);
+            const response = await axiosClient.get(`/users/${this.props.id}`);
             console.log(response.data);
-            this.setState({item: response.data})
+            this.setState({user: response.data})
         }
         catch (err) {
             this.setState({message: 'ERROR por aqui NO PASAS'})
@@ -22,11 +25,10 @@ import axiosClient from '../../config/axios';
     }
 
     render() {
-
+  
         return (
             <div>
-                <h4>{this.state.message}</h4>
-                <h2>Hi User</h2>
+                <Profile user={this.state.user}/>
             </div>
         )
     }

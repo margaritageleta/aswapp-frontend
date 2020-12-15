@@ -13,8 +13,18 @@ import Note from './Note';
 class Contribution extends Component {
 
     redirect() {
-        this.props.history.push(`/item/${this.props.item.id}`);
+      this.props.history.push(`/item/${this.props.item.id}`);
     }
+    
+    redirectUser() {
+      this.props.history.push(`/user/${this.props.item.author}`);
+    }
+
+    // getUsername(){
+    //   authId = this.props.item.author;
+    //   username = authId.username;
+    // }
+
 
     render() {
         const { classes } = this.props;
@@ -43,8 +53,8 @@ class Contribution extends Component {
                 <Button size="small" color="primary" onClick={console.log('CLICK')}>
                     {this.props.item.number_votes} VOTES
                 </Button>
-                <Button size="small" color="primary" onClick={this.redirect.bind(this)}>
-                    USER {this.props.item.author}
+                <Button size="small" color="primary" onClick={this.redirectUser.bind(this)}>
+                    BY USER {this.props.item.author}
                 </Button>
                 <Button size="small" color="primary">
                     <Moment fromNow>
