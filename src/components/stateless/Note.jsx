@@ -10,6 +10,7 @@ import Moment from 'react-moment';
 import { withRouter } from 'react-router-dom';
 import PersonIcon from "@material-ui/icons/Person";
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import ReplyIcon from '@material-ui/icons/Reply';
 import axiosClient, { idClient } from '../../config/axios';
 
 
@@ -45,6 +46,9 @@ class Note extends Component {
                 </Typography>
                 <Button size="small" color="primary" startIcon={<PersonIcon />}>
                     User {this.props.comment.author}
+                </Button>
+                <Button size="small" color="primary" startIcon={<ReplyIcon />}>
+                    Reply
                 </Button>
                 { this.props.comment.author == idClient
                 ?<Button size="small" color="primary" 
