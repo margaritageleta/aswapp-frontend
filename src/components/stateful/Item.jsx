@@ -7,14 +7,21 @@ import Contribution from '../stateless/Contribution'
         super(props);
         this.state = { 
             item: {}, 
+            comments: [],
             message: '',
         };
     }
     
     async componentDidMount(){
         try {
-            const response = await axiosClient.get(`/items/` + this.props.id);
-            this.setState({item: response.data})
+            const response = await axiosClient.get(`/items/${this.props.id}`);
+            this.setState({item: response.data});
+
+            if (!this.props.less) {
+                const response = await axiosClient.get(`/items/${this.props.id}/comments`);
+                this.setState({comments: response.data});
+                console.log(this.state.comments);
+            }
         }
         catch (err) {
             this.setState({message: 'ERROR por aqui NO PASAS'})
@@ -27,7 +34,7 @@ import Contribution from '../stateless/Contribution'
 
             <div>
                 <h4>{this.state.message}</h4>
-                <Contribution item={this.state.item} less={this.props.less}/>
+                <Contribution item={this.state.item} less={this.props.less} comments={this.state.comments}/>
             </div>
         )
     }
