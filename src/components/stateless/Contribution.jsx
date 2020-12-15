@@ -16,9 +16,13 @@ class Contribution extends Component {
     }
     
     redirectUser() {
-
-      this.props.history.push(`/user/${this.props.id}`); //undefined??
+      this.props.history.push(`/user/${this.props.item.author}`);
     }
+
+    // getUsername(){
+    //   authId = this.props.item.author;
+    //   username = authId.username;
+    // }
 
 
     render() {
@@ -49,7 +53,7 @@ class Contribution extends Component {
                     {this.props.item.number_votes} VOTES
                 </Button>
                 <Button size="small" color="primary" onClick={this.redirectUser.bind(this)}>
-                    USER {this.props.item.author}
+                    BY USER {this.props.item.author}
                 </Button>
                 <Button size="small" color="primary">
                     <Moment fromNow>

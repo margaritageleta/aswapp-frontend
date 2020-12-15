@@ -19,7 +19,15 @@ class Profile extends Component {
         const { classes } = this.props;
         console.log('LESS', this.props.less);
         return(
-            <h1>Hello</h1>
+            <h1>
+                {this.props.user.username}<br></br>
+                {this.props.user.created_at}<br></br>
+                {this.props.user.description}
+                {this.props.user.about}<br></br>
+                {this.props.user.karma}<br></br>
+                
+            </h1>
+
         )
     }
 }
