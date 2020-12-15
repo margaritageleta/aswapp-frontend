@@ -28,11 +28,11 @@ const useStyles =  makeStyles((theme) => ({
         justifyContent: 'center',
         justifySelf: 'center',
         justifyItems: 'center',
-        height: 
+     
 
     },
     menuButton: {
-        marginRight: 100,
+        marginRight: 10,
     },
     imagen: {
         borderBlockColor: 'white' ,
