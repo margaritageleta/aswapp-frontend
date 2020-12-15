@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { NewsScreen, NewestScreen, AskScreen, ItemScreen } from './components/stateful/App';
+import { NewsScreen, NewestScreen, AskScreen, ItemScreen, UserScreen } from './components/stateful/App';
 import reportWebVitals from './reportWebVitals';
+
 
 ReactDOM.render(
   <Router>
@@ -11,6 +12,7 @@ ReactDOM.render(
       <Route exact path="/newest" component={NewestScreen}/>
       <Route exact path="/ask" component={AskScreen}/>
       <Route exact path="/item/:id" component={ItemScreen}/>
+      <Route exact path="/user/:id" component={UserScreen}/>
     </Switch>
   </Router>,
   document.getElementById('root')

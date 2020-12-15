@@ -3,9 +3,10 @@ import React, { Component } from 'react';
 import Items from './Items';
 import Item from './Item';
 // import Comments from './Comments';
-// import User from './User';
+import User from './User';
 import Nav from '../stateless/Nav';
 import { useParams } from 'react-router-dom'
+
 
 const NewsScreen = () => {
 	return (
@@ -44,4 +45,14 @@ const ItemScreen = () => {
 	)
 };
 
-export { NewsScreen, NewestScreen, AskScreen, ItemScreen };
+const UserScreen = () => {
+	let { id } = useParams()
+	return (
+		  <div>
+		  <Nav/>   
+		  <User id={id}/>
+		  </div>
+	  )
+  };
+
+export { NewsScreen, NewestScreen, AskScreen, ItemScreen, UserScreen };
