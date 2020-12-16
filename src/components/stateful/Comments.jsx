@@ -24,12 +24,10 @@ import Note from '../stateless/Note';
             else response= await axiosClient.get(`/users/` + this.props.id + '/votedComments');
             
 
-            console.log(response.data);
             this.setState({comments: response.data})
         }
         catch (err) {
-            this.setState({message: 'ERROR por aqui NO PASAS'})
-            console.log(err)
+            this.setState({message: 'ERROR por aqui NO PASAS'});
         }
     }
 

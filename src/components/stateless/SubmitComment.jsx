@@ -10,7 +10,7 @@ import axiosClient, { idClient } from '../../config/axios';
             author: idClient,
             comment: '',
             created_at: "2020-12-02T17:03:38.994910Z",
-            referenced_publication: props.item.id,
+            referenced_publication: this.props.item.id,
             parent: null
         };
         this.handleReply = this.handleReply.bind(this);    
@@ -24,15 +24,16 @@ import axiosClient, { idClient } from '../../config/axios';
     
     async handleSubmit(event) {
         event.preventDefault();
-        console.log(this.props.item.id)
+        console.log(this.props.item)
         try {
+            this.setState({referenced_publication: this.props.item.id});
             event.preventDefault();
             console.log(this.state);
               
             
             const response = await axiosClient.post(`/items/${this.props.item.id}/comments/`, this.state);
             window.location.reload();
-            axiosClient.defaults.headers.post['X-CRFTOKEN'] = 'EK1R4B9zEEG8p9DIBoPcUjunRHrFnk1xgwPMGMnB6F4uA8TgrcKL9vGEeM3Nsp5n';
+            axiosClient.defaults.headers.post['X-CRFTOKEN'] = 'hbzutSgT2Y2mJ4LWVgHGxf1rJuRH2GliPDKXbdEBvNNJqUWdHthlJnPr2oWjRjR6';
 
             console.log(response)
             event.preventDefault();
