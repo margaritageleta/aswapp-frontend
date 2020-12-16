@@ -8,6 +8,7 @@ import Nav from '../stateless/Nav';
 import Submit from '../stateless/Submit';
 
 import { useParams } from 'react-router-dom'
+import { idClient } from '../../config/axios';
 
 const NewsScreen = () => {
 	return (
@@ -66,6 +67,13 @@ const UserScreen = () => {
 	  )
   };
 
+  const UserSubmissionsScreen = () => {
+	return (
+		  <div>
+		  <Nav />   
+		  	<Items type={'ALL'} userId={idClient} voted={false}/>
+		  </div>
+	  )
+  };
 
-
-export { NewsScreen, NewestScreen, AskScreen, ItemScreen, UserScreen, SubmitScreen, };
+export { NewsScreen, NewestScreen, AskScreen, ItemScreen, UserScreen, UserSubmissionsScreen, SubmitScreen };
