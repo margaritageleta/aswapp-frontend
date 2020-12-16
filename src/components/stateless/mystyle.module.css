@@ -18,6 +18,11 @@ h1 {
 
   }*/
 
+  
+  .topnav-right{
+    float: right;
+  }
+
   .title{
     font-family: Verdana, Geneva, sans-serif;
     font-size: 10pt;
@@ -32,17 +37,21 @@ h1 {
       margin-right: 5px;
  }
 
+ .appbar{
+  width: 90%;
+  position: relative;
+  margin-top: 7.5px;
+  box-shadow: transparent;
+  height: 0px;
+ }
  
 .bar {
   background-color: #ff6b0f;
-  width: 90%;
-  margin-top: 7.5px;
-  margin-left: 5%;
-  margin-right: 5%;
-  position: relative;
   justify-self: center;
   justify-items: center;
-  height: 10px;
+  margin-left: 5%;
+  margin-right: 5%;
+  
 }
 .menuButton {
   margin-right: 1;

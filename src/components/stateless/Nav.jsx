@@ -12,6 +12,7 @@ import HackerIcon from './favicon.png'
 import axiosClient from '../../config/axios';
 
 
+
 /*const useStyles =  makeStyles((theme) => ({
     offset: theme.mixins.toolbar,
     title: {
@@ -86,8 +87,8 @@ class Nav extends Component {
             </nav>
             */
            <div>
-                <AppBar >
-                    <Toolbar className={styles.bar}>
+                <AppBar position="relative" color="inherit" className={styles.appbar}>
+                    <Toolbar className={styles.bar} style={{height: '5px'}}>
                         <IconButton>
                             <img src={HackerIcon} alt="Logo" style={{ border: '1px solid white' }}></img>
                         </IconButton>
@@ -97,44 +98,53 @@ class Nav extends Component {
                     
                         <List component="nav">
                             <ListItem component="div">
-                                <ListItemText inset>
-                                    <TypoGraphy color="inherit" variant="title">
-                                        <Link to='/newest'> Newest</Link>
-                                    </TypoGraphy>
-                                </ListItemText>
 
                                 <ListItemText inset>
                                     <TypoGraphy color="inherit" variant="title">
-                                        <Link to='/ask'>Ask</Link>
+                                        <Link to='/newest'> new</Link>
                                     </TypoGraphy>
                                 </ListItemText>
-
-                                <ListItemText inset>
-                                    <TypoGraphy color="inherit" variant="title">
-                                        Contact
-                                    </TypoGraphy>
-                                </ListItemText>
-                            </ListItem >
-
-                        </List>
-                            
-                        <List component="nav">
-                            <ListItem component="div">
-                                <ListItemText>
-                                    <TypoGraphy color="inherit" variant="title">
-                                            <Link to='/newest'> Profile</Link>
-                                    </TypoGraphy>
-                                </ListItemText>
-                                {this.state.user.username}<h1></h1>
                                 <h4>|</h4>
-                                <ListItemText>
+                                <ListItemText inset style={{marginLeft: 0}}>
                                     <TypoGraphy color="inherit" variant="title">
-                                            <Link to='/newest'> logout</Link>
+                                        <Link to='/newest'> threads</Link>
                                     </TypoGraphy>
                                 </ListItemText>
-                            </ListItem>
-                            
-                        </List> 
+                                <h4>|</h4>
+                                <ListItemText inset style={{marginLeft: 0}}>
+                                    <TypoGraphy color="inherit" variant="title">
+                                        <Link to='/ask'>ask</Link>
+                                    </TypoGraphy>
+                                </ListItemText>   
+                                <h4>|</h4>
+                                <ListItemText inset style={{marginLeft: 0}}>
+                                    <TypoGraphy color="inherit" variant="title">
+                                        <Link to='/submit'>submit</Link>
+                                    </TypoGraphy>
+                                </ListItemText>
+
+                            </ListItem >
+                        </List>
+                        <div class="topnav-right">
+                            <List component="nav"> 
+                                <ListItem component="div">
+                                    <ListItemText>
+                                        <TypoGraphy color="inherit" variant="title">
+                                                <Link to='/newest'> Profile</Link>
+                                        </TypoGraphy>
+                                    </ListItemText>
+                                    {this.state.user.username}<h1></h1>
+                                    <h4>|</h4>
+                                    <ListItemText>
+                                        <TypoGraphy color="inherit" variant="title">
+                                                <Link to='/newest'> logout</Link>
+                                        </TypoGraphy>
+                                    </ListItemText>
+                                </ListItem>
+                                
+                            </List> 
+                        </div>    
+                        
                     </Toolbar>
                    
                 </AppBar>
