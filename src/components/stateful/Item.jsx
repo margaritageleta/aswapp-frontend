@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axiosClient from '../../config/axios';
 import Contribution from '../stateless/Contribution'
+import SubmitComment from '../stateless/SubmitComment';
 
  class Item extends Component {
     constructor(props) {

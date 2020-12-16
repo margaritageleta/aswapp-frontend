@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import Moment from 'react-moment';
 import { withRouter } from 'react-router-dom';
 import Note from './Note';
+import SubmitComment from './SubmitComment';
 
 class Contribution extends Component {
 
