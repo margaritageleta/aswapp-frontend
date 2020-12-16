@@ -1,13 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import TypoGraphy from '@material-ui/core/Typography';
+<<<<<<< HEAD
 import { Link, withRouter } from 'react-router-dom';
 import styles from './mystyle.module.css'
 import {  IconButton, makeStyles, withTheme } from '@material-ui/core';
+=======
+import { Link } from 'react-router-dom';
+import './NavStyle.css'
+import { IconButton, makeStyles } from '@material-ui/core';
+>>>>>>> 41f057f610c27723c757d6036f7eb3b8cbfc1a5d
 import HackerIcon from './favicon.png'
 import axiosClient from '../../config/axios';
 

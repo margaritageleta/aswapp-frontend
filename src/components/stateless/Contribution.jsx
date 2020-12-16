@@ -56,7 +56,7 @@ class Contribution extends Component {
                 <Button size="small" color="primary" onClick={this.redirectUser.bind(this)}>
                     BY USER {this.props.item.author}
                 </Button>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary" onClick={this.redirect.bind(this)}>
                     <Moment fromNow>
                         {this.props.item.created_at}
                     </Moment>
