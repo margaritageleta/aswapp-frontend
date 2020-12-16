@@ -42,7 +42,7 @@ const SubmitScreen = () => {
 	return (
 		<div>
         <Nav/>
-		<Submit/>
+			<Submit/>
 		</div>
 
 	) 
@@ -53,7 +53,7 @@ const ItemScreen = () => {
   return (
 		<div>
         <Nav />   
-        <Item id={id} less={false}/>
+        	<Item id={id} less={false}/>
 		</div>
 	)
 };
@@ -63,7 +63,7 @@ const UserScreen = () => {
 	return (
 		  <div>
 		  <Nav />   
-		  <User id={id}/>
+		  	<User id={id}/>
 		  </div>
 	  )
   };
@@ -81,9 +81,27 @@ const UserScreen = () => {
 	return (
 		  <div>
 		  <Nav />  
-		  	<Comments id={idClient} fromUser={true}/> 
+		  	<Comments id={idClient} fromUser={true} voted={false}/> 
 		  </div>
 	  )
   };
 
-export { NewsScreen, NewestScreen, AskScreen, ItemScreen, UserScreen, UserSubmissionsScreen, UserCommentsScreen, SubmitScreen };
+  const VotedSubmissionsScreen = () => {
+	return (
+		  <div>
+		  <Nav />  
+		  	<Items type={'ALL'} userId={idClient} voted={true}/>
+		  </div>
+	  )
+  };
+
+  const VotedCommentsScreen = () => {
+	return (
+		  <div>
+		  <Nav />  
+		  	<Comments id={idClient} fromUser={true} voted={true}/> 
+		  </div>
+	  )
+  };
+
+export { NewsScreen, NewestScreen, AskScreen, ItemScreen, UserScreen, UserSubmissionsScreen, UserCommentsScreen, SubmitScreen, VotedSubmissionsScreen, VotedCommentsScreen };

@@ -58,10 +58,10 @@ class Profile extends Component {
                 </form>
                 </p>
                 <p>
-                    <Link to={`/user/${idClient}/contributions`}>submissions</Link><br></br> 
+                    <Link to={`/user/${idClient}/contributions`}>Submissions</Link><br></br> 
                     <Link to={`/user/${idClient}/comments`}>Comments</Link><br></br> 
-                    <Link to={'/'}>Upvoted submissions</Link><br></br> 
-                    <Link to={'/'}>Upvoted comments</Link><br></br> 
+                    <Link to={`/user/${idClient}/votedSubmissions`}>Upvoted submissions</Link><br></br> 
+                    <Link to={`/user/${idClient}/votedComments`}>Upvoted comments</Link><br></br> 
                 </p>
                 
                 </CardContent>

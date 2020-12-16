@@ -15,8 +15,14 @@ import Note from '../stateless/Note';
     async componentDidMount(){
         try {
             var response = null;
-            if(this.props.fromUser == true) response= await axiosClient.get(`/items/` + this.props.id + '/comments');
-            else response= await axiosClient.get(`/items/users` + this.props.id + '/comments');
+            console.log(this.props.voted)
+            if(this.props.voted == false){
+                
+                if(this.props.fromUser == true) response= await axiosClient.get(`/users/` + this.props.id + '/comments');
+                else response= await axiosClient.get(`/items/` + this.props.id + '/comments');
+            }
+            else response= await axiosClient.get(`/users/` + this.props.id + '/votedComments');
+            
 
             console.log(response.data);
             this.setState({comments: response.data})
