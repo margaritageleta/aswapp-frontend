@@ -17,7 +17,6 @@ class Profile extends Component {
                 {this.props.user.description}
                 {this.props.user.about}<br></br>
                 {this.props.user.karma}<br></br>
-                
             </h1>
 
         )
