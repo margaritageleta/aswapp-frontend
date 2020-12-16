@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { NewsScreen, NewestScreen, AskScreen, ItemScreen, UserScreen, SubmitScreen, UserSubmissionsScreen } from './components/stateful/App';
+import { NewsScreen, NewestScreen, AskScreen, ItemScreen, UserScreen, SubmitScreen, UserSubmissionsScreen, UserCommentsScreen } from './components/stateful/App';
 import reportWebVitals from './reportWebVitals';
 
 
@@ -15,6 +15,7 @@ ReactDOM.render(
       <Route exact path="/user/:id" component={UserScreen}/>
       <Route exact path="/submit" component={SubmitScreen}/>
       <Route exact path="/user/:id/contributions" component={UserSubmissionsScreen}/>
+      <Route exact path="/user/:id/comments" component={UserCommentsScreen}/>
     </Switch>
   </Router>,
   document.getElementById('root')

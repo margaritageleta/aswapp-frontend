@@ -9,6 +9,7 @@ import Submit from '../stateless/Submit';
 
 import { useParams } from 'react-router-dom'
 import { idClient } from '../../config/axios';
+import Comments from './Comments'
 
 const NewsScreen = () => {
 	return (
@@ -76,4 +77,13 @@ const UserScreen = () => {
 	  )
   };
 
-export { NewsScreen, NewestScreen, AskScreen, ItemScreen, UserScreen, UserSubmissionsScreen, SubmitScreen };
+  const UserCommentsScreen = () => {
+	return (
+		  <div>
+		  <Nav />  
+		  	<Comments id={idClient} fromUser={true}/> 
+		  </div>
+	  )
+  };
+
+export { NewsScreen, NewestScreen, AskScreen, ItemScreen, UserScreen, UserSubmissionsScreen, UserCommentsScreen, SubmitScreen };

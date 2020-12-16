@@ -59,7 +59,7 @@ class Profile extends Component {
                 </p>
                 <p>
                     <Link to={`/user/${idClient}/contributions`}>submissions</Link><br></br> 
-                    <Link to={'/'}>Comments</Link><br></br> 
+                    <Link to={`/user/${idClient}/comments`}>Comments</Link><br></br> 
                     <Link to={'/'}>Upvoted submissions</Link><br></br> 
                     <Link to={'/'}>Upvoted comments</Link><br></br> 
                 </p>
