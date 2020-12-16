@@ -122,7 +122,7 @@ class ToolbarComponent extends React.Component {
         open={isMenuOpen}
         onClose={this.handleMenuClose}
       >
-        <Link to={`user/${idClient}`}><MenuItem onClick={this.handleMenuClose}>Profile</MenuItem></Link>
+        <Link to={`/user/${idClient}`}><MenuItem onClick={this.handleMenuClose}>Profile</MenuItem></Link>
         <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
       </Menu>
     );
@@ -139,7 +139,7 @@ class ToolbarComponent extends React.Component {
         onClose={this.handleMobileMenuClose}
       >
 
-        <Link to={`user/${idClient}`}>
+        <Link to={`/user/${idClient}`}>
           <MenuItem onClick={this.handleProfileMenuOpen}>
           <IconButton color="inherit">
             <AccountCircle />

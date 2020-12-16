@@ -5,6 +5,8 @@ import Item from './Item';
 // import Comments from './Comments';
 import User from './User';
 import Nav from '../stateless/Nav';
+import Submit from '../stateless/Submit';
+
 import { useParams } from 'react-router-dom'
 import { idClient } from '../../config/axios';
 import Comments from './Comments'
@@ -30,10 +32,20 @@ const NewestScreen = () => {
 const AskScreen = () => {
 	return (
 		<div>
-        <Nav />
+        <Nav/>
 			<Items type={'ASK'} userId={''} voted={false}/>
 		</div>
 	)
+};
+
+const SubmitScreen = () => {
+	return (
+		<div>
+        <Nav/>
+		<Submit/>
+		</div>
+
+	) 
 };
 
 const ItemScreen = () => {
@@ -74,4 +86,4 @@ const UserScreen = () => {
 	  )
   };
 
-export { NewsScreen, NewestScreen, AskScreen, ItemScreen, UserScreen, UserSubmissionsScreen, UserCommentsScreen };
+export { NewsScreen, NewestScreen, AskScreen, ItemScreen, UserScreen, UserSubmissionsScreen, UserCommentsScreen, SubmitScreen };

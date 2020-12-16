@@ -81,7 +81,7 @@ class DrawerComponent extends React.Component {
                   );
                 case 4:
                   return (
-                    <Link to={'/ask'}>
+                    <Link to={'/submit'}>
                     <ListItem button key={text}>
                       <ListItemIcon><PublishIcon />&nbsp; 
                       <ListItemText primary={text} />

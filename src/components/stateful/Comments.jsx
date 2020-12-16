@@ -17,6 +17,7 @@ import Note from '../stateless/Note';
             var response = null;
             if(this.props.fromUser == true) response= await axiosClient.get(`/items/` + this.props.id + '/comments');
             else response= await axiosClient.get(`/items/users` + this.props.id + '/comments');
+
             console.log(response.data);
             this.setState({comments: response.data})
         }

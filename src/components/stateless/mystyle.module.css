@@ -1,4 +1,3 @@
-
 /*div {
     background-color: var(--orange-hn);
     display: flex;
@@ -18,47 +17,50 @@ h1 {
 
   }*/
 
-  .desc{
-    min-width: 150pt;
-    min-height: 150pt;
-  }
+.desc {
+  min-width: 150pt;
+  min-height: 150pt;
+}
 
-  .text{
-    font-family: "Verdana";
-    font-size: 5pt;
-    color: #828282;
-  }
-  .title{
-    font-family: Verdana, Geneva, sans-serif;
-    font-size: 10pt;
-    color: #222222;
-    line-height: 12px;
-  }      
-  
-  h4{
-      color: black;
-      font-size: 12;
-      margin-left: 5px;
-      margin-right: 5px;
- }
+.text {
+  font-family: "Verdana";
+  font-size: 5pt;
+  color: #828282;
+}
+.title {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 10pt;
+  color: #222222;
+  line-height: 12px;
+}
 
- 
+h4 {
+  color: black;
+  font-size: 12;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.appbar {
+  width: 90%;
+  position: relative;
+  margin-top: 7.5px;
+  box-shadow: transparent;
+  height: 0px;
+}
+
 .bar {
   background-color: #ff6b0f;
-  width: 90%;
-  margin-top: 7.5px;
-  margin-left: 5%;
-  margin-right: 5%;
-  position: relative;
   justify-self: center;
   justify-items: center;
-  height: 10px;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 .menuButton {
   margin-right: 1;
 }
 .imagen {
-  border-block-color: white ;
+  border-block-color: white;
   height: 18px;
   width: 18px;
   border-width: 10;
