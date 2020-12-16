@@ -6,12 +6,11 @@ import Item from './Item';
 import User from './User';
 import Nav from '../stateless/Nav';
 import { useParams } from 'react-router-dom'
-import { idClient } from '../../config/axios';
 
 const NewsScreen = () => {
 	return (
 		<div>
-        <Nav id={idClient}/>
+        <Nav />
 			<Items type={'ALL'} userId={''} voted={false}/>
 		</div>
 	)
@@ -20,7 +19,7 @@ const NewsScreen = () => {
 const NewestScreen = () => {
 	return (
 		<div>
-        <Nav id={idClient}/>
+        <Nav />
 			<Items type={'URL'} userId={''} voted={false}/>
 		</div>
 	)
@@ -29,7 +28,7 @@ const NewestScreen = () => {
 const AskScreen = () => {
 	return (
 		<div>
-        <Nav id={idClient}/>
+        <Nav />
 			<Items type={'ASK'} userId={''} voted={false}/>
 		</div>
 	)
@@ -39,7 +38,7 @@ const ItemScreen = () => {
   let { id } = useParams()
   return (
 		<div>
-        <Nav id={idClient}/>   
+        <Nav />   
         <Item id={id} less={false}/>
 		</div>
 	)
@@ -49,7 +48,7 @@ const UserScreen = () => {
 	let { id } = useParams()
 	return (
 		  <div>
-		  <Nav id={idClient}/>   
+		  <Nav />   
 		  <User id={id}/>
 		  </div>
 	  )
