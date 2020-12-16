@@ -67,7 +67,7 @@ class Contribution extends Component {
             {(this.props.less == false) 
             ? <Grid container direction={'column'}>
                 {this.props.comments.map(c => 
-                    c.parent == null? <Note comments={this.props.comments} comment={c} depth={4}/>
+                    c.parent == null? <Note comments={this.props.comments} comment={c} depth={4} item={this.props.item}/>
                     : <span></span>
                 )}
               </Grid>
