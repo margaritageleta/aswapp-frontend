@@ -3,6 +3,10 @@ import { withRouter, Link} from 'react-router-dom';
 import styles from './mystyle.module.css';
 import Moment from 'react-moment';
 import { idClient } from '../../config/axios';
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
 
 class Profile extends Component {
 
@@ -35,42 +39,33 @@ class Profile extends Component {
         const { classes } = this.props;
         console.log('LESS', this.props.less);
         return(
-            // <h1>
-            //     {this.props.user.username}<br></br>
-            //     {this.props.user.created_at}<br></br>
-            //     {this.props.user.description}
-            //     {this.props.user.about}<br></br>
-            //     {this.props.user.karma}<br></br>
-            // </h1>
-            <div className={styles.text}>
-                <h1>
-                    user: {this.props.user.username}<br></br>
-                    created: <Moment fromNow>{this.props.user.created_at}</Moment><br></br> 
-                    karma: {this.props.user.karma}<br></br>
-                    about:{this.props.user.about}<br></br>
-                </h1>
-                <form onSubmit={this.handleSubmit} className={styles.text}> 
-                    <label>
-                        <h1>description:</h1>
+            <Card style={{ marginTop: 10, marginLeft: 5, marginRight: 5 }}>
+                <CardContent>
+                <p>
+                    <b>user:</b> {this.props.user.username}<br></br>
+                    <b>created:</b> <Moment fromNow>{this.props.user.created_at}</Moment><br></br> 
+                    <b>karma:</b> {this.props.user.karma}<br></br>
+                
+                <form onSubmit={this.handleSubmit}> 
+                        <b>description:</b>
                         <div>
                             <input type="text" value={this.props.user.description} onChange={this.handleChange} className={styles.desc}/>
                         </div>
-                          
-                    </label>
                     <div>
                         <input type="submit" value="Update" onClick={this.redirectPost.bind(this)} />
                     </div>
                     
                 </form>
-                <h1>
+                </p>
+                <p>
                     <Link to={`/user/${idClient}/contributions`}>submissions</Link><br></br> 
                     <Link to={'/'}>Comments</Link><br></br> 
                     <Link to={'/'}>Upvoted submissions</Link><br></br> 
                     <Link to={'/'}>Upvoted comments</Link><br></br> 
-                </h1>
+                </p>
                 
-            </div>
-            
+                </CardContent>
+            </Card>
 
         )
     }
