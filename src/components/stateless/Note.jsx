@@ -21,7 +21,7 @@ class Note extends Component {
             window.location.reload();
         }
         catch (err) {
-            this.setState({message: 'ERROR por aqui NO PASAS'})
+            this.setState({message: 'ERROR por aqui NO PASAS'});
         }
     }
 

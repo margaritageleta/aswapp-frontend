@@ -5,13 +5,14 @@ import Item from './Item';
 // import Comments from './Comments';
 import User from './User';
 import Nav from '../stateless/Nav';
+import Submit from '../stateless/Submit';
+
 import { useParams } from 'react-router-dom'
-import { idClient } from '../../config/axios';
 
 const NewsScreen = () => {
 	return (
 		<div>
-        <Nav id={idClient}/>
+        <Nav />
 			<Items type={'ALL'} userId={''} voted={false}/>
 		</div>
 	)
@@ -20,7 +21,7 @@ const NewsScreen = () => {
 const NewestScreen = () => {
 	return (
 		<div>
-        <Nav id={idClient}/>
+        <Nav />
 			<Items type={'URL'} userId={''} voted={false}/>
 		</div>
 	)
@@ -29,17 +30,27 @@ const NewestScreen = () => {
 const AskScreen = () => {
 	return (
 		<div>
-        <Nav id={idClient}/>
+        <Nav/>
 			<Items type={'ASK'} userId={''} voted={false}/>
 		</div>
 	)
+};
+
+const SubmitScreen = () => {
+	return (
+		<div>
+        <Nav/>
+		<Submit/>
+		</div>
+
+	) 
 };
 
 const ItemScreen = () => {
   let { id } = useParams()
   return (
 		<div>
-        <Nav id={idClient}/>   
+        <Nav />   
         <Item id={id} less={false}/>
 		</div>
 	)
@@ -49,10 +60,12 @@ const UserScreen = () => {
 	let { id } = useParams()
 	return (
 		  <div>
-		  <Nav id={idClient}/>   
+		  <Nav />   
 		  <User id={id}/>
 		  </div>
 	  )
   };
 
-export { NewsScreen, NewestScreen, AskScreen, ItemScreen, UserScreen };
+
+
+export { NewsScreen, NewestScreen, AskScreen, ItemScreen, UserScreen, SubmitScreen, };

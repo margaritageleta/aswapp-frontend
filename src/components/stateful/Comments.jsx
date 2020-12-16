@@ -12,7 +12,7 @@ import axiosClient from '../../config/axios';
     
     async componentDidMount(){
         try {
-            const response = await axiosClient.get(`/items/` + this.props.id + '/comments');
+            const response = await axiosClient.get(`/items/${this.props.id}/comments`);
             console.log(response.data);
             this.setState({item: response.data})
         }
