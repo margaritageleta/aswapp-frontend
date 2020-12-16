@@ -5,12 +5,14 @@ import ListItemText from '@material-ui/core/ListItemText';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import TypoGraphy from '@material-ui/core/Typography';
-import { Link } from 'react-router-dom';
-import './NavStyle.css'
-import { Icon, IconButton, makeStyles, withTheme } from '@material-ui/core';
+import { Link, withRouter } from 'react-router-dom';
+import styles from './mystyle.module.css'
+import {  IconButton, makeStyles, withTheme } from '@material-ui/core';
 import HackerIcon from './favicon.png'
+import axiosClient from '../../config/axios';
 
-const useStyles =  makeStyles((theme) => ({
+
+/*const useStyles =  makeStyles((theme) => ({
     offset: theme.mixins.toolbar,
     title: {
         
@@ -24,15 +26,17 @@ const useStyles =  makeStyles((theme) => ({
         backgroundColor: '#ff6b0f',
         width: '90%',
         marginTop: '7.5px',
+        marginLeft: '5%',
+        marginRight: '5%',
         position: 'relative',
         justifyContent: 'center',
         justifySelf: 'center',
         justifyItems: 'center',
-     
+        height: '24px',
 
     },
     menuButton: {
-        marginRight: 10,
+        marginRight: 1,
     },
     imagen: {
         borderBlockColor: 'white' ,
@@ -43,10 +47,37 @@ const useStyles =  makeStyles((theme) => ({
         color: 'white', 
         backgroundColor: 'white' ,
     },
-}));
+    rightbar: {
+        flexGrow: 1,
+    }
+    <div className={styles.offset}></div>
+}));*/
 
-export default function Nav() {
-    const classes = useStyles()
+class Nav extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { 
+            user: {}, 
+            message: '',
+        };
+    }
+
+    async componentDidMount(){
+        try {
+            console.log(this.props.id);
+            const response = await axiosClient.get(`/users/${this.props.id}`);
+            console.log(response.data);
+            this.setState({user: response.data})
+            console.log(this.state.user.username);
+        }
+        catch (err) {
+            this.setState({message: 'ERROR por aqui NO PASAS'})
+        }
+    }
+
+    render(){
+        //const classes = useStyles()
         return (
             /*<nav className="Navbar">
                 <i></i>
@@ -55,13 +86,13 @@ export default function Nav() {
             </nav>
             */
            <div>
-                <AppBar className={classes.bar}>
-                    <Toolbar >
+                <AppBar >
+                    <Toolbar className={styles.bar}>
                         <IconButton>
                             <img src={HackerIcon} alt="Logo" style={{ border: '1px solid white' }}></img>
                         </IconButton>
                         <TypoGraphy>
-                            <h1 className={classes.title} to='/' >Hacker News</h1>
+                            <h1 className={styles.title} to='/' >Hacker News</h1>
                         </TypoGraphy>
                     
                         <List component="nav">
@@ -86,11 +117,33 @@ export default function Nav() {
                             </ListItem >
 
                         </List>
+                            
+                        <List component="nav">
+                            <ListItem component="div">
+                                <ListItemText>
+                                    <TypoGraphy color="inherit" variant="title">
+                                            <Link to='/newest'> Profile</Link>
+                                    </TypoGraphy>
+                                </ListItemText>
+                                {this.state.user.username}<h1></h1>
+                                <h4>|</h4>
+                                <ListItemText>
+                                    <TypoGraphy color="inherit" variant="title">
+                                            <Link to='/newest'> logout</Link>
+                                    </TypoGraphy>
+                                </ListItemText>
+                            </ListItem>
+                            
+                        </List> 
                     </Toolbar>
                    
                 </AppBar>
-                <div className={classes.offset}></div>
+                
             </div>
         )
+
+    }
+    
 }
 
+export default Nav;

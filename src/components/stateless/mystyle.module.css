@@ -1,0 +1,58 @@
+
+/*div {
+    background-color: var(--orange-hn);
+    display: flex;
+    justify-content: space-between;
+    font-size: large;
+}
+
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    color: darkblue;
+
+  }*/
+
+  .title{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 10pt;
+    color: #222222;
+    line-height: 12px;
+  }      
+  
+  h4{
+      color: black;
+      font-size: 12;
+      margin-left: 5px;
+      margin-right: 5px;
+ }
+
+ 
+.bar {
+  background-color: #ff6b0f;
+  width: 90%;
+  margin-top: 7.5px;
+  margin-left: 5%;
+  margin-right: 5%;
+  position: relative;
+  justify-self: center;
+  justify-items: center;
+  height: 10px;
+}
+.menuButton {
+  margin-right: 1;
+}
+.imagen {
+  border-block-color: white ;
+  height: 18px;
+  width: 18px;
+  border-width: 10;
+  border-color: white;
+  color: white;
+  background-color: white;
+}
