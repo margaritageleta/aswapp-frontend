@@ -9,6 +9,7 @@ import SubmitComment from '../stateless/SubmitComment';
         this.state = { 
             item: {}, 
             comments: [],
+            error: false,
             message: '',
         };
     }
@@ -25,17 +26,23 @@ import SubmitComment from '../stateless/SubmitComment';
             }
         }
         catch (err) {
-            this.setState({message: 'ERROR por aqui NO PASAS'})
+            if (err.response.status == 404) {
+                this.setState({error: true, message: 'No comments'})
+            } else {
+                console.log(err.response);
+            }
         }
     }
 
     render() {
-        console.log('LESS PROP', this.props.less);
         return (
 
             <div>
-                <h4>{this.state.message}</h4>
                 <Contribution item={this.state.item} less={this.props.less} comments={this.state.comments}/>
+                {(this.state.error)
+                ? <h4 style={{textAlign: 'center'}}>{this.state.message}</h4>
+                : <span></span>
+                }
             </div>
         )
     }

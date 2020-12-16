@@ -54,7 +54,7 @@ class Contribution extends Component {
                 </CardContent>
               }
               <CardActions>
-                <Button size="small" color="primary" onClick={console.log('CLICK')}>
+                <Button size="small" color="primary">
                     {this.props.item.number_votes} VOTES
                 </Button>
                 <Button size="small" color="primary" onClick={this.redirectUser.bind(this)}>
