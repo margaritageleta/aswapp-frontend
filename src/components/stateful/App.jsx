@@ -6,6 +6,7 @@ import Item from './Item';
 import User from './User';
 import Nav from '../stateless/Nav';
 import { useParams } from 'react-router-dom'
+import { idClient } from '../../config/axios';
 
 const NewsScreen = () => {
 	return (
@@ -54,4 +55,13 @@ const UserScreen = () => {
 	  )
   };
 
-export { NewsScreen, NewestScreen, AskScreen, ItemScreen, UserScreen };
+  const UserSubmissionsScreen = () => {
+	return (
+		  <div>
+		  <Nav />   
+		  	<Items type={'ALL'} userId={idClient} voted={false}/>
+		  </div>
+	  )
+  };
+
+export { NewsScreen, NewestScreen, AskScreen, ItemScreen, UserScreen, UserSubmissionsScreen };

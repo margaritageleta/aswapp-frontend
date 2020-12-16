@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link} from 'react-router-dom';
+import styles from './mystyle.module.css';
+import Moment from 'react-moment';
+import { idClient } from '../../config/axios';
 
 class Profile extends Component {
 
@@ -39,13 +42,35 @@ class Profile extends Component {
             //     {this.props.user.about}<br></br>
             //     {this.props.user.karma}<br></br>
             // </h1>
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Description:
-                    <input type="text" value={this.props.user.description} onChange={this.handleChange} />
-                </label>
-                <input type="submit" value="Submit" onClick={this.redirectPost.bind(this)} />
-            </form>
+            <div className={styles.text}>
+                <h1>
+                    user: {this.props.user.username}<br></br>
+                    created: <Moment fromNow>{this.props.user.created_at}</Moment><br></br> 
+                    karma: {this.props.user.karma}<br></br>
+                    about:{this.props.user.about}<br></br>
+                </h1>
+                <form onSubmit={this.handleSubmit} className={styles.text}> 
+                    <label>
+                        <h1>description:</h1>
+                        <div>
+                            <input type="text" value={this.props.user.description} onChange={this.handleChange} className={styles.desc}/>
+                        </div>
+                          
+                    </label>
+                    <div>
+                        <input type="submit" value="Update" onClick={this.redirectPost.bind(this)} />
+                    </div>
+                    
+                </form>
+                <h1>
+                    <Link to={`/user/${idClient}/contributions`}>submissions</Link><br></br> 
+                    <Link to={'/'}>Comments</Link><br></br> 
+                    <Link to={'/'}>Upvoted submissions</Link><br></br> 
+                    <Link to={'/'}>Upvoted comments</Link><br></br> 
+                </h1>
+                
+            </div>
+            
 
         )
     }

@@ -18,6 +18,16 @@ h1 {
 
   }*/
 
+  .desc{
+    min-width: 150pt;
+    min-height: 150pt;
+  }
+
+  .text{
+    font-family: "Verdana";
+    font-size: 5pt;
+    color: #828282;
+  }
   .title{
     font-family: Verdana, Geneva, sans-serif;
     font-size: 10pt;
