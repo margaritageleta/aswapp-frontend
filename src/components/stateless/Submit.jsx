@@ -13,7 +13,7 @@ import axiosClient, { idClient } from '../../config/axios';
             title: '',
             question: '',
             url: '',
-            kind: 0, 
+            kind: '0', 
 
         };
         this.handleTitle = this.handleTitle.bind(this);    
@@ -29,12 +29,17 @@ import axiosClient, { idClient } from '../../config/axios';
 
     handleUrl(event) {
         this.setState({url: event.target.value});
+        this.setState({kind: '1'})
     }
     handleText(event) {
         this.setState({question: event.target.value});
     }
     
     async handleSubmit(event) {
+
+        console.log("________")
+        console.log(this.state.kind);
+        console.log("________")
         event.preventDefault();
         try {
             event.preventDefault();
@@ -51,7 +56,7 @@ import axiosClient, { idClient } from '../../config/axios';
 
         }
         catch (err) {
-            console.log(err)
+            console.log(err.response)
             console.log('ERROR por aqui NO PASAS');
         }
         alert('A name was submitted: ' + this.state.title + this.state.url + this.state.text);
