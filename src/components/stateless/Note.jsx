@@ -11,9 +11,22 @@ import PersonIcon from "@material-ui/icons/Person";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import ReplyIcon from '@material-ui/icons/Reply';
 import axiosClient, { idClient } from '../../config/axios';
-
+import Collapse from '@material-ui/core/Collapse';
+import SubmitComment from './SubmitComment';
 
 class Note extends Component {
+    constructor(props){
+        super(props)
+        this.state = {expanded: false}
+    }
+
+    handleExpandClick = () => {
+        if (!this.state.expanded) {
+            this.setState({expanded: true})
+        } else {
+            this.setState({expanded: false})
+        }
+    }
 
     async deleteComment() {
         try {
@@ -21,7 +34,7 @@ class Note extends Component {
             window.location.reload();
         }
         catch (err) {
-            this.setState({message: 'ERROR por aqui NO PASAS'})
+            this.setState({message: 'ERROR por aqui NO PASAS'});
         }
     }
 
@@ -32,6 +45,7 @@ class Note extends Component {
 
     render() {
         console.log(idClient);
+        console.log('Render');
         return (
             <Grid item>
             <Card style={{ marginTop: 10, marginLeft: 5 * this.props.depth, marginRight: 5, backgroundColor: "#ffedbc"}}>
@@ -53,7 +67,10 @@ class Note extends Component {
                         User {this.props.comment.author}
                     </Button>
                 </Link>
-                <Button size="small" color="primary" startIcon={<ReplyIcon />}>
+                <Button size="small" color="primary" startIcon={<ReplyIcon />} 
+                    onClick={this.handleExpandClick.bind(this)}
+                    aria-expanded={false}
+                >
                     Reply
                 </Button>
                 { this.props.comment.author == idClient
@@ -66,10 +83,15 @@ class Note extends Component {
                 : <span></span>
                 }
               </CardActions>
+              <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                    <SubmitComment item={this.props.item} parent={this.props.comment} />
+                </CardContent>
+            </Collapse>
             </Card>
             {this.props.comments.map(c => 
                 c.parent == this.props.comment.id 
-                ? <Note comments={this.props.comments} comment={c} depth={this.props.depth * 2}/>
+                ? <Note comments={this.props.comments} comment={c} depth={this.props.depth * 2} item={this.props.item}/>
                 : <span></span>
             )}
             </Grid>
