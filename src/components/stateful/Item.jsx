@@ -22,7 +22,6 @@ import SubmitComment from '../stateless/SubmitComment';
             if (!this.props.less) {
                 const response = await axiosClient.get(`/items/${this.props.id}/comments`);
                 this.setState({comments: response.data});
-                console.log(this.state.comments);
             }
         }
         catch (err) {
@@ -38,7 +37,6 @@ import SubmitComment from '../stateless/SubmitComment';
         return (
             <div>
                 <h4>{this.state.message}</h4>
-                <SubmitComment item={this.state.item} parent = ''/>
                 <Contribution item={this.state.item} less={this.props.less} comments={this.state.comments}/>
                 {(this.state.error)
                 ? <h4 style={{textAlign: 'center'}}>{this.state.message}</h4>
