@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import Moment from 'react-moment';
 import { withRouter } from 'react-router-dom';
 import Note from './Note';
+import axiosClient, { idClient } from '../../config/axios';
 import SubmitComment from './SubmitComment';
 
 class Contribution extends Component {
@@ -20,6 +21,41 @@ class Contribution extends Component {
     redirectUser() {
       this.props.history.push(`/user/${this.props.item.author}`);
     }
+
+    setColor(btn, color) {
+      var property = document.getElementById("btn_vote");
+      if (property.style.backgroundColor = "primary") {
+        property.style.backgroundColor = "green";
+      }
+      else if (property.style.backgroundColor = "green") {
+        property.style.backgroundColor = "primary";
+      }
+    }
+
+    async handleVote(event) {
+      event.preventDefault();
+      try {
+          event.preventDefault();
+          console.log(this.props.item.id);
+            
+          
+          const response = await axiosClient.post(`/items/${this.props.item.id}/votes/`);
+          window.location.reload();
+          axiosClient.defaults.headers.post['X-CRFTOKEN'] = 'WvOLm5rnFDhVwnzHoA7BFUG1gooQUjyAnkNzjHzgkKgrPsoGkeOblQNeEFUCIpE0';
+
+          console.log(response)
+          event.preventDefault();
+
+
+      }
+      catch (err) {
+          console.log(err)
+          console.log('ERROR por aqui NO PASAS');
+      }
+      //alert('The item has been voted');
+      event.preventDefault();
+
+  }
 
     render() {
         const { classes } = this.props;
@@ -54,7 +90,7 @@ class Contribution extends Component {
                 </CardContent>
               }
               <CardActions>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary" id='btn_vote' onClick={this.handleVote.bind(this)}>
                     {this.props.item.number_votes} VOTES
                 </Button>
                 <Button size="small" color="primary" onClick={this.redirectUser.bind(this)}>
