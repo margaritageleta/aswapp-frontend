@@ -20,18 +20,23 @@ import { withRouter, Redirect } from 'react-router-dom';
         try {
             const response = await axiosClient.get(`/items/${this.props.id}`);
             this.setState({item: response.data});
+        }
+        catch (err) {
+            this.setState({redirect: true});
+        }
 
-            if (!this.props.less) {
+        if (!this.props.less) {
+            try {
                 const response = await axiosClient.get(`/items/${this.props.id}/comments`);
                 this.setState({comments: response.data});
             }
-        }
-        catch (err) {
-            this.setState({redirect: true})
-            if (err.response.status == 404) {
-                this.setState({error: true, message: 'No comments'})
-            } else {
-                console.log(err.response);
+            catch (err) {
+                if (err.response.status == 404) {
+                    this.setState({error: true, message: 'No comments'})
+                } else {
+                    this.setState({redirect: true})
+                    console.log(err.response);
+                }
             }
         }
     }
@@ -42,7 +47,6 @@ import { withRouter, Redirect } from 'react-router-dom';
         } else {
             return (
                 <div>
-                    <h4>{this.state.message}</h4>
                     <Contribution item={this.state.item} less={this.props.less} comments={this.state.comments}/>
                     {(this.state.error)
                     ? <h4 style={{textAlign: 'center'}}>{this.state.message}</h4>

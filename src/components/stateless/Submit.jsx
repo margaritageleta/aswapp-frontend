@@ -1,7 +1,8 @@
 import { now } from 'moment';
 import React, { Component } from 'react'
 import axiosClient, { idClient } from '../../config/axios';
-
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 
  class Submit extends Component {
     constructor(props) {
@@ -66,17 +67,21 @@ import axiosClient, { idClient } from '../../config/axios';
 
     render() {
         return (
+            <Card style={{ marginTop: 10, marginLeft: 5, marginRight: 5 , backgroundColor: "#ffedbc"}}>
+                <CardContent>
             <form onSubmit={this.handleSubmit}>
             <label>
                 Title:
-                <input type="text" value={this.state.value} onChange={this.handleTitle} />
-                Url: 
-                <input type="text" value={this.state.value} onChange={this.handleUrl} />
+                <input type="text" value={this.state.value} onChange={this.handleTitle} /><br></br>
+                Url: &nbsp;&nbsp;
+                <input type="text" value={this.state.value} onChange={this.handleUrl} /><br></br>
                 Text: 
-                <input type="text" value={this.state.value} onChange={this.handleText} />
+                <input type="text" value={this.state.value} onChange={this.handleText} /><br></br>
             </label>
             <input type="submit" value="Submit" />
             </form>
+            </CardContent>
+            </Card> 
         );
     }
 }
