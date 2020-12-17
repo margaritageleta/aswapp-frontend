@@ -15,7 +15,7 @@ const NewsScreen = () => {
 	return (
 		<div>
         <Nav />
-			<Items type={'ALL'} userId={''} voted={false}/>
+			<Items type={'ALL'} userId={''} voted={false} />
 		</div>
 	)
 };
