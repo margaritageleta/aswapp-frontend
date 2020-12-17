@@ -7,7 +7,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Moment from 'react-moment';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter, Link, Redirect } from 'react-router-dom';
 import Note from './Note';
 import axiosClient, { idClient } from '../../config/axios';
 import SubmitComment from './SubmitComment';
@@ -81,7 +81,17 @@ class Contribution extends Component {
       //alert('The item has been voted');
       event.preventDefault();
 
-  }
+    }
+
+    async deleteItem() {
+      try {
+          const response = await axiosClient.delete(`/items/${this.props.item.id}`);
+          <Redirect to='/'/>
+      }
+      catch (err) {
+          this.setState({message: 'You cannot delete this contribution'});
+      }
+    }
 
     render() {
         const { classes } = this.props;
@@ -134,6 +144,15 @@ class Contribution extends Component {
                 >
                     Reply
                 </Button>
+                { this.props.item.author == idClient
+                ?<Button size="small" color="primary" 
+                    startIcon={<DeleteForeverIcon />}
+                    onClick={this.deleteItem.bind(this)}
+                >
+                    Delete
+                </Button>
+                : <span></span>
+                }
 
                 <Button size="small" color="primary" id='btn_vote' onClick={this.handleVote.bind(this)} endIcon={<ThumbUpIcon />} style={{color: this.state.color}}>
                     {this.props.item.number_votes}

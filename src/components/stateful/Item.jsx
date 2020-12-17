@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axiosClient from '../../config/axios';
 import Contribution from '../stateless/Contribution'
 import SubmitComment from '../stateless/SubmitComment';
+import { withRouter, Redirect } from 'react-router-dom';
 
  class Item extends Component {
     constructor(props) {
@@ -11,6 +12,7 @@ import SubmitComment from '../stateless/SubmitComment';
             comments: [],
             error: false,
             message: '',
+            redirect: false,
         };
     }
     
@@ -25,6 +27,7 @@ import SubmitComment from '../stateless/SubmitComment';
             }
         }
         catch (err) {
+            this.setState({redirect: true})
             if (err.response.status == 404) {
                 this.setState({error: true, message: 'No comments'})
             } else {
@@ -34,18 +37,22 @@ import SubmitComment from '../stateless/SubmitComment';
     }
 
     render() {
-        return (
-            <div>
-                <h4>{this.state.message}</h4>
-                <Contribution item={this.state.item} less={this.props.less} comments={this.state.comments}/>
-                {(this.state.error)
-                ? <h4 style={{textAlign: 'center'}}>{this.state.message}</h4>
-                : <span></span>
-                }
-            </div>
-        )
+        if (this.state.redirect) {
+            return <Redirect to='/'/>;
+        } else {
+            return (
+                <div>
+                    <h4>{this.state.message}</h4>
+                    <Contribution item={this.state.item} less={this.props.less} comments={this.state.comments}/>
+                    {(this.state.error)
+                    ? <h4 style={{textAlign: 'center'}}>{this.state.message}</h4>
+                    : <span></span>
+                    }
+                </div>
+            )
+        }
     }
 }
 
 
-export default Item;
+export default withRouter(Item);
