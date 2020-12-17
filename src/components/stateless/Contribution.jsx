@@ -21,6 +21,17 @@ class Contribution extends Component {
       this.props.history.push(`/user/${this.props.item.author}`);
     }
 
+    setColor(btn, color) {
+      
+      var property = document.getElementById("btn_vote");
+      if (property.style.backgroundColor = "primary") {
+        property.style.backgroundColor = "green";
+      }
+      else if (property.style.backgroundColor = "green") {
+        property.style.backgroundColor = "primary";
+      }
+    }
+
     render() {
         const { classes } = this.props;
         return(
@@ -54,7 +65,7 @@ class Contribution extends Component {
                 </CardContent>
               }
               <CardActions>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary" id='btn_vote' onClick={this.setColor.bind(this)}>
                     {this.props.item.number_votes} VOTES
                 </Button>
                 <Button size="small" color="primary" onClick={this.redirectUser.bind(this)}>
