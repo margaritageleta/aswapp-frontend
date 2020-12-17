@@ -10,7 +10,7 @@ import CardContent from "@material-ui/core/CardContent";
         this.state = {
             author: idClient,
             created_at: "2020-12-02T17:03:38.994910Z",
-            number_votes: 50,
+            number_votes: 1,
             title: '',
             question: '',
             url: '',
@@ -60,7 +60,6 @@ import CardContent from "@material-ui/core/CardContent";
             console.log(err.response)
             console.log('ERROR por aqui NO PASAS');
         }
-        alert('A name was submitted: ' + this.state.title + this.state.url + this.state.text);
         event.preventDefault();
 
     }

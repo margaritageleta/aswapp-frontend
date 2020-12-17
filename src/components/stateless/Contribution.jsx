@@ -20,7 +20,7 @@ import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 class Contribution extends Component {
     constructor(props){
       super(props)
-      this.state = {color: 'silver', voted: false, expanded: false}
+      this.state = {color: 'silver', voted: false, expanded: false,  redirect: false,}
     }
 
     handleExpandClick = () => {
@@ -86,7 +86,7 @@ class Contribution extends Component {
     async deleteItem() {
       try {
           const response = await axiosClient.delete(`/items/${this.props.item.id}`);
-          <Redirect to='/'/>
+          this.setState({redirect: true});
       }
       catch (err) {
           this.setState({message: 'You cannot delete this contribution'});
@@ -95,6 +95,9 @@ class Contribution extends Component {
 
     render() {
         const { classes } = this.props;
+        if (this.state.redirect) {
+          return <Redirect to='/'/>;
+        } else {
         return(
             <Grid item>
             <Card style={{ marginTop: 10, marginLeft: 5, marginRight: 5, backgroundColor: '#ffe0bd' }}>
@@ -175,6 +178,7 @@ class Contribution extends Component {
             }
           </Grid>
         )
+      }
     }
 }
 
