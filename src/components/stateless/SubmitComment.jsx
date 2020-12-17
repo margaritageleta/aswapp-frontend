@@ -20,6 +20,7 @@ import axiosClient, { idClient } from '../../config/axios';
     
     handleReply(event) {
         this.setState({comment: event.target.value});
+        this.setState({referenced_publication: this.props.item.id});
     }   
     
     async handleSubmit(event) {

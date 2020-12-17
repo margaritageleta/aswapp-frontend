@@ -36,7 +36,6 @@ import SubmitComment from '../stateless/SubmitComment';
 
     render() {
         return (
-
             <div>
                 <h4>{this.state.message}</h4>
                 <SubmitComment item={this.state.item}/>
