@@ -7,12 +7,29 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Moment from 'react-moment';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import Note from './Note';
 import axiosClient, { idClient } from '../../config/axios';
 import SubmitComment from './SubmitComment';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import Collapse from '@material-ui/core/Collapse';
+import ReplyIcon from '@material-ui/icons/Reply';
+import PersonIcon from "@material-ui/icons/Person";
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 
 class Contribution extends Component {
+    constructor(props){
+      super(props)
+      this.state = {color: 'silver', voted: false, expanded: false}
+    }
+
+    handleExpandClick = () => {
+        if (!this.state.expanded) {
+            this.setState({expanded: true})
+        } else {
+            this.setState({expanded: false})
+        }
+    }
 
     redirect() {
       this.props.history.push(`/item/${this.props.item.id}`);
@@ -22,13 +39,20 @@ class Contribution extends Component {
       this.props.history.push(`/user/${this.props.item.author}`);
     }
 
-    setColor(btn, color) {
-      var property = document.getElementById("btn_vote");
-      if (property.style.backgroundColor = "primary") {
-        property.style.backgroundColor = "green";
+    async componentDidMount(){
+      try {
+        console.log('CLIENT ID', idClient);
+        const response = await axiosClient.get(`/users/${idClient}/votedItems`);
+        console.log('VOTES')
+        console.log(response.data);
+        response.data.map(c => {
+            if (c.id == this.props.item.id){
+              this.setState({color: 'green', voted: true});
+            }
+        });
       }
-      else if (property.style.backgroundColor = "green") {
-        property.style.backgroundColor = "primary";
+      catch (err) {
+          console.log('ERROR por aqui NO PASAS');
       }
     }
 
@@ -36,16 +60,18 @@ class Contribution extends Component {
       event.preventDefault();
       try {
           event.preventDefault();
-          console.log(this.props.item.id);
-            
-          
+        
           const response = await axiosClient.post(`/items/${this.props.item.id}/votes/`);
           window.location.reload();
-          axiosClient.defaults.headers.post['X-CRFTOKEN'] = 'WvOLm5rnFDhVwnzHoA7BFUG1gooQUjyAnkNzjHzgkKgrPsoGkeOblQNeEFUCIpE0';
+          axiosClient.defaults.headers.post['X-CRFTOKEN'] = 'hbzutSgT2Y2mJ4LWVgHGxf1rJuRH2GliPDKXbdEBvNNJqUWdHthlJnPr2oWjRjR6';
 
-          console.log(response)
           event.preventDefault();
-
+          if (response.data.status == '202, publication voted') {
+            this.setState({color: 'green', voted: true});
+          } else {
+            this.setState({color: 'silver', voted: false});
+          }
+          console.log(this.state);
 
       }
       catch (err) {
@@ -90,18 +116,34 @@ class Contribution extends Component {
                 </CardContent>
               }
               <CardActions>
-                <Button size="small" color="primary" id='btn_vote' onClick={this.handleVote.bind(this)}>
-                    {this.props.item.number_votes} VOTES
+                <Typography variant="caption" component="p">
+                  &nbsp;  Posted &nbsp; 
+                  <b><Moment fromNow>
+                      {this.props.item.created_at}
+                  </Moment></b>
+                  &nbsp;  by
+                </Typography>
+                <Link to={`/user/${this.props.item.author}`}>
+                    <Button size="small" color="primary" startIcon={<PersonIcon /> }>
+                        User {this.props.item.author}
+                    </Button>
+                </Link>
+                <Button size="small" color="primary" startIcon={<ReplyIcon />} 
+                    onClick={this.handleExpandClick.bind(this)}
+                    aria-expanded={false}
+                >
+                    Reply
                 </Button>
-                <Button size="small" color="primary" onClick={this.redirectUser.bind(this)}>
-                    BY USER {this.props.item.author}
-                </Button>
-                <Button size="small" color="primary" onClick={this.redirect.bind(this)}>
-                    <Moment fromNow>
-                        {this.props.item.created_at}
-                    </Moment>
+
+                <Button size="small" color="primary" id='btn_vote' onClick={this.handleVote.bind(this)} endIcon={<ThumbUpIcon />} style={{color: this.state.color}}>
+                    {this.props.item.number_votes}
                 </Button>
               </CardActions>
+              <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                  <SubmitComment item={this.props.item} parent = ''/>
+                </CardContent>
+              </Collapse>
             </Card>
             {(this.props.less == false) 
             ? <Grid container direction={'column'}>
