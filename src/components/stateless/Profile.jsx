@@ -39,7 +39,7 @@ class Profile extends Component {
         const { classes } = this.props;
         console.log('LESS', this.props.less);
         return(
-            <Card style={{ marginTop: 10, marginLeft: 5, marginRight: 5 }}>
+            <Card style={{ marginTop: 10, marginLeft: 5, marginRight: 5 , backgroundColor: "#ffedbc"}}>
                 <CardContent>
                 <p>
                     <b>user:</b> {this.props.user.username}<br></br>

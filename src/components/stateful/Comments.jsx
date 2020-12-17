@@ -35,7 +35,6 @@ import Note from '../stateless/Note';
 
         return (
             <div>
-                <h4>{this.state.message}</h4>
                 <Grid container direction={'column'}>
                     {this.state.comments.map(c => 
                         c.parent == null? <Note comments={this.state.comments} comment={c} depth={4}/>

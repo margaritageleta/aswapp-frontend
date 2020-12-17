@@ -97,7 +97,7 @@ class Contribution extends Component {
         const { classes } = this.props;
         return(
             <Grid item>
-            <Card style={{ marginTop: 10, marginLeft: 5, marginRight: 5 }}>
+            <Card style={{ marginTop: 10, marginLeft: 5, marginRight: 5, backgroundColor: '#ffe0bd' }}>
               {(this.props.less != false) 
               ? <CardActionArea onClick={this.redirect.bind(this)}>
                   <CardContent>
