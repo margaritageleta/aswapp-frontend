@@ -21,6 +21,7 @@ import axiosClient, { idClient } from '../../config/axios';
     handleReply(event) {
         this.setState({comment: event.target.value});
         this.setState({referenced_publication: this.props.item.id});
+        this.setState({parent: this.props.parent.id});
     }   
     
     async handleSubmit(event) {

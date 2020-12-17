@@ -38,7 +38,7 @@ import SubmitComment from '../stateless/SubmitComment';
         return (
             <div>
                 <h4>{this.state.message}</h4>
-                <SubmitComment item={this.state.item}/>
+                <SubmitComment item={this.state.item} parent = ''/>
                 <Contribution item={this.state.item} less={this.props.less} comments={this.state.comments}/>
                 {(this.state.error)
                 ? <h4 style={{textAlign: 'center'}}>{this.state.message}</h4>
